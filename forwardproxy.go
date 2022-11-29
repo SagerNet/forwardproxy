@@ -48,6 +48,10 @@ import (
 
 func init() {
 	caddy.RegisterModule(Handler{})
+
+	// Used for generating padding lengths. Not needed to be cryptographically secure.
+	// Does not care about double seeding.
+	rand.Seed(time.Now().UnixNano())
 }
 
 // Handler implements a forward proxy.
